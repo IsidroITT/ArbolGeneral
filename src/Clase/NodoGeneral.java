@@ -18,4 +18,17 @@ public class NodoGeneral {
         }
         return null;
     }
+    
+    public boolean enlazaHijo(NodoGeneral hijo){
+        NodoHijo enlaceHijo = new NodoHijo(hijo);
+        if(enlaceHijo == null) return false;
+        if(ini == null & fin == null) {
+            ini = fin = enlaceHijo;
+            return true;
+        }
+        enlaceHijo.ant = fin;
+        fin.sig = enlaceHijo;
+        fin = enlaceHijo;
+        return true;
+    }
 }
