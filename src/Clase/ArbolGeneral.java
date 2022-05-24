@@ -7,7 +7,24 @@ public class ArbolGeneral {
     public ArbolGeneral(){raiz = null;}
     
     public boolean insertar(String pathPadre, char dato){
-        return true;
+        //1.- Revisa si raiz existe, si no lo crea con el valor del dato
+        if(raiz == null){
+            raiz = new NodoGeneral(dato);
+            return true;
+        }
+        //2.- Revisa si el path path exite
+        NodoGeneral padre = encontrarNodo(pathPadre);
+        if( padre == null) return false;
+        
+        //3.- Si exite un hermano que se llame IGUAL que el hijo que vamos a crear
+        NodoGeneral gemelo = encontrarNodo(pathPadre+"/"+dato);
+        // regresa falso si exite un gemelo
+        if( gemelo != null) return false;
+        
+        //4.- Se construye el nodo a enlazar/insertar en el arbol
+        NodoGeneral hijoNuevo = new NodoGeneral(dato);
+        
+        return padre.enlazaHijo(hijoNuevo);
     }
     
     public boolean eliminar(String pathNodoEliminar){
