@@ -6,42 +6,52 @@ public class ArbolGeneral {
     
     public ArbolGeneral(){raiz = null;}
     
-    public boolean insertar(String pathPadre, char dato){
+    public boolean insertar(String pathPadre, char dato) {
         //1.- Revisa si raiz existe, si no lo crea con el valor del dato
-        if(raiz == null){
+        if (raiz == null) {
             raiz = new NodoGeneral(dato);
             return true;
         }
         //2.- Revisa si el path path exite
         NodoGeneral padre = encontrarNodo(pathPadre);
-        if( padre == null) return false;
-        
+        if (padre == null) {
+            return false;
+        }
+
         //3.- Si exite un hermano que se llame IGUAL que el hijo que vamos a crear
-        NodoGeneral gemelo = encontrarNodo(pathPadre+"/"+dato);
+        NodoGeneral gemelo = encontrarNodo(pathPadre + "/" + dato);
         // regresa falso si exite un gemelo
-        if( gemelo != null) return false;
-        
+        if (gemelo != null) {
+            return false;
+        }
+
         //4.- Se construye el nodo a enlazar/insertar en el arbol
         NodoGeneral hijoNuevo = new NodoGeneral(dato);
-        
+
         return padre.enlazaHijo(hijoNuevo);
     }
-    
-    public boolean eliminar(String pathNodoEliminar){
+
+    public boolean eliminar(String pathNodoEliminar) {
         // Obtenemos el tam del path del padre
         int posicionUltimaDiagonal = pathNodoEliminar.lastIndexOf("/");
         // Generamos el path del padre
-        String pathPadre = pathNodoEliminar.substring(0,posicionUltimaDiagonal);
+        String pathPadre = pathNodoEliminar.substring(0, posicionUltimaDiagonal);
         // Buscamos el path del padre
         NodoGeneral padre = encontrarNodo(pathPadre);
         // Si padre existe continuamos, si no false
-        if(padre == null) return false;
+        if (padre == null) {
+            return false;
+        }
         // Buscamos al hijo a eliminar
         NodoGeneral hijoAEliminar = encontrarNodo(pathNodoEliminar);
         // Si el hijo existe continuamos, si no false
-        if(hijoAEliminar == null) return false;
+        if (hijoAEliminar == null) {
+            return false;
+        }
         // Si hijo es rama, false
-        if(hijoAEliminar.esRama()) return false;
+        if (hijoAEliminar.esRama()) {
+            return false;
+        }
         // Desenlazamos el hijo del padre
         return padre.desenlazarHijo(hijoAEliminar);
     }
