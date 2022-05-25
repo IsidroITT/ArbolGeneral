@@ -33,8 +33,6 @@ public class ArbolGeneral {
     
     public NodoGeneral encontrarNodo(String path){
         if(raiz == null || path.isEmpty()) return null;// retorna null, si no existe raiz o path esta vacio
-//        if(raiz == null) return null;//salir si no existe raiz
-//        if(path.isEmpty()) return null;//salir si no exite path
         //quitar diagonal
         path = path.replaceFirst("/", "");
         //convertir cadena a vector
