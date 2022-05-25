@@ -28,7 +28,22 @@ public class ArbolGeneral {
     }
     
     public boolean eliminar(String pathNodoEliminar){
-        return true;
+        // Obtenemos el tam del path del padre
+        int posicionUltimaDiagonal = pathNodoEliminar.lastIndexOf("/");
+        // Generamos el path del padre
+        String pathPadre = pathNodoEliminar.substring(0,posicionUltimaDiagonal);
+        // Buscamos el path del padre
+        NodoGeneral padre = encontrarNodo(pathPadre);
+        // Si padre existe continuamos, si no false
+        if(padre == null) return false;
+        // Buscamos al hijo a eliminar
+        NodoGeneral hijoAEliminar = encontrarNodo(pathNodoEliminar);
+        // Si el hijo existe continuamos, si no false
+        if(hijoAEliminar == null) return false;
+        // Si hijo es rama, false
+        if(hijoAEliminar.esRama()) return false;
+        // Desenlazamos el hijo del padre
+        return padre.desenlazarHijo(hijoAEliminar);
     }
     
     public NodoGeneral encontrarNodo(String path){

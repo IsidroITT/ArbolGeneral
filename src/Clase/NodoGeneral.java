@@ -72,4 +72,8 @@ public class NodoGeneral {
         }
         return false;
     }
+    
+    public boolean esRama(){
+        return ini != null && fin != null; // si estan en null == rama, != null es hoja
+    }
 }
