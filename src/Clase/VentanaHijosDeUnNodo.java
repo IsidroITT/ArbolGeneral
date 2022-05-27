@@ -84,8 +84,10 @@ public class VentanaHijosDeUnNodo extends javax.swing.JFrame {
     private void btnBuscarHijosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarHijosActionPerformed
         String pathBuscaHijos = txtPathNodo.getText();
         NodoGeneral NE = arbol.encontrarNodo(pathBuscaHijos);
-        if(NE ==  null) showMessageDialog(this,"El nodo no fue encontrado");        
-        PaneMostrarHijos.setText(NE.mostrarHijos());
+        if(NE ==  null) showMessageDialog(this,"El nodo no fue encontrado");     
+        String nodosHijos = NE.mostrarHijos();
+        if(nodosHijos.isEmpty()) showMessageDialog(this,"El nodo padre no tiene hijos");
+        PaneMostrarHijos.setText(nodosHijos);
     }//GEN-LAST:event_btnBuscarHijosActionPerformed
 
     

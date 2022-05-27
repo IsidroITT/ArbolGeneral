@@ -21,8 +21,10 @@ public class NodoGeneral {
 
     public String mostrarHijos(){
         String hijos = "";
+        int i = 1;
         for (NodoHijo tmp = ini; tmp != null; tmp = tmp.sig){
-            hijos += "Hijo ["+tmp.enlaceHijo.dato+"] ";
+            hijos += "Hijo ["+i+"] "+tmp.enlaceHijo.dato+"\n";
+            i++;
         }
         return hijos;
     }
