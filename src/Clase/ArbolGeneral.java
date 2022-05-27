@@ -61,7 +61,7 @@ public class ArbolGeneral {
         //quitar diagonal
         path = path.replaceFirst("/", "");
         //convertir cadena a vector
-        String vector[] = path.split("");
+        String vector[] = path.split("/");
         //descartar si el valor de raiz no coincide con la raiz real
         if(raiz.dato != vector[0].charAt(0)) return null;
         //regresa raiz si el path de tam 1

@@ -19,6 +19,14 @@ public class NodoGeneral {
         return null;
     }
 
+    public String mostrarHijos(){
+        String hijos = "";
+        for (NodoHijo tmp = ini; tmp != null; tmp = tmp.sig){
+            hijos += "Hijo ["+tmp.enlaceHijo.dato+"] ";
+        }
+        return hijos;
+    }
+    
     public boolean enlazaHijo(NodoGeneral hijo) {
         NodoHijo enlaceHijo = new NodoHijo(hijo);
         if (enlaceHijo == null) {
